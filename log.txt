@@ -1,0 +1,63 @@
+rm -f dwm drw.o dwm.o util.o dwm-6.5.tar.gz
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700L -DVERSION=\"6.5\" -DXINERAMA drw.c
+cc -c -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os -I/usr/X11R6/include -I/usr/include/freetype2 -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700L -DVERSION=\"6.5\" -DXINERAMA dwm.c
+In file included from dwm.c:45:
+shift-tools.c: In function 'shifttag':
+shift-tools.c:11:79: error: 'tags' undeclared (first use in this function); did you mean 'tag'?
+   11 |                 shifted.ui = ((shifted.ui << arg->i) | (shifted.ui >> (LENGTH(tags) - arg->i)));
+      |                                                                               ^~~~
+util.h:6:42: note: in definition of macro 'LENGTH'
+    6 | #define LENGTH(X)               (sizeof (X) / sizeof (X)[0])
+      |                                          ^
+shift-tools.c:11:79: note: each undeclared identifier is reported only once for each function it appears in
+   11 |                 shifted.ui = ((shifted.ui << arg->i) | (shifted.ui >> (LENGTH(tags) - arg->i)));
+      |                                                                               ^~~~
+util.h:6:42: note: in definition of macro 'LENGTH'
+    6 | #define LENGTH(X)               (sizeof (X) / sizeof (X)[0])
+      |                                          ^
+shift-tools.c: In function 'shifttagclients':
+shift-tools.c:34:53: error: 'tags' undeclared (first use in this function); did you mean 'tag'?
+   34 |                            | (shifted.ui >> (LENGTH(tags) - arg->i));
+      |                                                     ^~~~
+util.h:6:42: note: in definition of macro 'LENGTH'
+    6 | #define LENGTH(X)               (sizeof (X) / sizeof (X)[0])
+      |                                          ^
+shift-tools.c: In function 'shiftview':
+shift-tools.c:51:78: error: 'tags' undeclared (first use in this function); did you mean 'tag'?
+   51 |                 shifted.ui = (shifted.ui << arg->i) | (shifted.ui >> (LENGTH(tags) - arg->i));
+      |                                                                              ^~~~
+util.h:6:42: note: in definition of macro 'LENGTH'
+    6 | #define LENGTH(X)               (sizeof (X) / sizeof (X)[0])
+      |                                          ^
+shift-tools.c: In function 'shiftviewclients':
+shift-tools.c:73:53: error: 'tags' undeclared (first use in this function); did you mean 'tag'?
+   73 |                            | (shifted.ui >> (LENGTH(tags) - arg->i));
+      |                                                     ^~~~
+util.h:6:42: note: in definition of macro 'LENGTH'
+    6 | #define LENGTH(X)               (sizeof (X) / sizeof (X)[0])
+      |                                          ^
+shift-tools.c: In function 'shiftboth':
+shift-tools.c:90:79: error: 'tags' undeclared (first use in this function); did you mean 'tag'?
+   90 |                 shifted.ui = ((shifted.ui << arg->i) | (shifted.ui >> (LENGTH(tags) - arg->i)));
+      |                                                                               ^~~~
+util.h:6:42: note: in definition of macro 'LENGTH'
+    6 | #define LENGTH(X)               (sizeof (X) / sizeof (X)[0])
+      |                                          ^
+shift-tools.c: In function 'swaptags':
+dwm.c:56:47: error: 'tags' undeclared (first use in this function); did you mean 'tag'?
+   56 | #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
+      |                                               ^~~~
+util.h:6:42: note: in definition of macro 'LENGTH'
+    6 | #define LENGTH(X)               (sizeof (X) / sizeof (X)[0])
+      |                                          ^
+shift-tools.c:102:41: note: in expansion of macro 'TAGMASK'
+  102 |         unsigned int newtag = arg->ui & TAGMASK;
+      |                                         ^~~~~~~
+shift-tools.c: In function 'shiftswaptags':
+shift-tools.c:130:79: error: 'tags' undeclared (first use in this function); did you mean 'tag'?
+  130 |                 shifted.ui = ((shifted.ui << arg->i) | (shifted.ui >> (LENGTH(tags) - arg->i)));
+      |                                                                               ^~~~
+util.h:6:42: note: in definition of macro 'LENGTH'
+    6 | #define LENGTH(X)               (sizeof (X) / sizeof (X)[0])
+      |                                          ^
+make: *** [Makefile:12: dwm.o] Error 1

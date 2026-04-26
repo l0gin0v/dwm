@@ -1,6 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 #include <X11/XF86keysym.h>
+#include "shift-tools.c"
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -8,13 +9,13 @@ static const unsigned int snap      = 32;       /* snap pixel (standart: 32) */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {
-	"Iosevka Nerd Font:style=SemiBold:size=13",
-  "FiraCode Nerd Font:style:Retina:size=13",
-	"Noto Color Emoji:size=12",
-	"Font Awesome 6 Free:size=13"
+	"FiraCode Nerd Font:style:Retina:size=16",
+  "Iosevka Nerd Font:style=SemiBold:size=13",
+  "Font Awesome 6 Free:size=13",
+	"Noto Color Emoji:size=12"
 };
 
-static const char dmenufont[]       = "Iosevka Nerd Font:style=SemiBold:size=13";
+static const char dmenufont[]       = "Iosevka Nerd Font:style=SemiBold:size=16";
 static const char gray1[]       = "#222222";
 static const char gray2[]       = "#444444";
 static const char gray3[]       = "#bbbbbb";
@@ -33,21 +34,33 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "R", "P", "I", "7", "8", "9" };
+const char *tags[] = {
+  "", "", "", "󰓓", "5", "6", "󰈦", "8", "9 ",
+  "", "", "", "", " ", "󰟓", "", "", "18"
+};
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor    ismaster*/
-	//{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "st",       NULL,       NULL,       1 << 0,	      0,           -1 },
-  { "firefox",  NULL,       NULL,       1 << 1,       0,           -1 },
-  { "Telegram", NULL,       NULL,       1 << 2,       0,           -1 },
-  { "rider",    NULL,       NULL,       1 << 3,       0,           -1 },
-  { "pycharm",  NULL,       NULL,       1 << 4,       0,           -1 },
-  { "idea",     NULL,       NULL,       1 << 5,       0,           -1 },
+	/* class                 instance    title       tags mask     isfloating   monitor    ismaster*/
+	//{ "Gimp",              NULL,       NULL,       0,            1,           -1 },
+  { "st-256color",         NULL,       NULL,       1 << 0,	     0,           -1 },
+  { "firefox",             NULL,       NULL,       1 << 1,       0,           -1 },
+  { "Telegram",            NULL,       NULL,       1 << 2,       0,           -1 },
+  { "steam",               NULL,       NULL,       1 << 3,       0,           -1 },
+  
+  { "Zathura",             NULL,       NULL,       1 << 6,       0,           -1 },
+
+  { "rider",               NULL,       NULL,       1 << 9,       0,           -1 },
+  { "rustrover",           NULL,       NULL,       1 << 10,      0,           -1 },
+  { "idea",                NULL,       NULL,       1 << 11,      0,           -1 },
+  { "pycharm",             NULL,       NULL,       1 << 12,      0,           -1 },
+  { "webstorm",            NULL,       NULL,       1 << 13,      0,           -1 },
+  { "goland",              NULL,       NULL,       1 << 14,      0,           -1 },
+  { "rubymine",            NULL,       NULL,       1 << 15,      0,           -1 },
+  { "datagrip",            NULL,       NULL,       1 << 16,      0,           -1 },
 };
 
 /* layout(s) */
@@ -120,8 +133,30 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+  { MODKEY|Mod1Mask,              XK_1,      view,      {.ui = 1 << 9} },   // тег 10
+  { MODKEY|Mod1Mask,              XK_2,      view,      {.ui = 1 << 10} },  // тег 11
+  { MODKEY|Mod1Mask,              XK_3,      view,      {.ui = 1 << 11} },  // тег 12
+  { MODKEY|Mod1Mask,              XK_4,      view,      {.ui = 1 << 12} },  // тег 13
+  { MODKEY|Mod1Mask,              XK_5,      view,      {.ui = 1 << 13} },  // тег 14
+  { MODKEY|Mod1Mask,              XK_6,      view,      {.ui = 1 << 14} },  // тег 15
+  { MODKEY|Mod1Mask,              XK_7,      view,      {.ui = 1 << 15} },  // тег 16
+  { MODKEY|Mod1Mask,              XK_8,      view,      {.ui = 1 << 16} },  // тег 17
+  { MODKEY|Mod1Mask,              XK_9,      view,      {.ui = 1 << 17} },  // тег 18
+  
+  { MODKEY|ShiftMask|Mod1Mask,              XK_1,      view,      {.ui = 1 << 9} },   // тег 10
+  { MODKEY|ShiftMask|Mod1Mask,              XK_2,      view,      {.ui = 1 << 10} },  // тег 11
+  { MODKEY|ShiftMask|Mod1Mask,              XK_3,      view,      {.ui = 1 << 11} },  // тег 12
+  { MODKEY|ShiftMask|Mod1Mask,              XK_4,      view,      {.ui = 1 << 12} },  // тег 13
+  { MODKEY|ShiftMask|Mod1Mask,              XK_5,      view,      {.ui = 1 << 13} },  // тег 14
+  { MODKEY|ShiftMask|Mod1Mask,              XK_6,      view,      {.ui = 1 << 14} },  // тег 15
+  { MODKEY|ShiftMask|Mod1Mask,              XK_7,      view,      {.ui = 1 << 15} },  // тег 16
+  { MODKEY|ShiftMask|Mod1Mask,              XK_8,      view,      {.ui = 1 << 16} },  // тег 17
+  { MODKEY|ShiftMask|Mod1Mask,              XK_9,      view,      {.ui = 1 << 17} },  // тег 18
 
 	{ ControlMask|ShiftMask,        XK_q,                    quit,           {0} },
+
+  { ControlMask|ShiftMask|MODKEY, XK_Left,                 shiftview,      { .i = -9 } },
+  { ControlMask|ShiftMask|MODKEY, XK_Right,                shiftview,      { .i = +9 } },
 
   /* user's shortcuts */
 
