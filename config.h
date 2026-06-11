@@ -9,13 +9,13 @@ static const unsigned int snap      = 32;       /* snap pixel (standart: 32) */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {
-	"FiraCode Nerd Font:style:Retina:size=16",
-  "Iosevka Nerd Font:style=SemiBold:size=13",
-  "Font Awesome 6 Free:size=13",
-	"Noto Color Emoji:size=12"
+	"FiraCode Nerd Font:style:SemiBold:size=18",
+  	"Iosevka Nerd Font:style=SemiBold:size=18",
+  	"Font Awesome 6 Free:size=18",
+	"Noto Color Emoji:size=18"
 };
 
-static const char dmenufont[]       = "Iosevka Nerd Font:style=SemiBold:size=16";
+static const char dmenufont[]       = "FiraCode Nerd Font:style=SemiBold:size=16";
 static const char gray1[]       = "#222222";
 static const char gray2[]       = "#444444";
 static const char gray3[]       = "#bbbbbb";
@@ -47,7 +47,7 @@ static const Rule rules[] = {
 	/* class                 instance    title       tags mask     isfloating   monitor    ismaster*/
 	//{ "Gimp",              NULL,       NULL,       0,            1,           -1 },
   { "st-256color",         NULL,       NULL,       1 << 0,	     0,           -1 },
-  { "firefox",             NULL,       NULL,       1 << 1,       0,           -1 },
+  { "Firefox",             NULL,       NULL,       1 << 1,       0,           -1 },
   { "Telegram",            NULL,       NULL,       1 << 2,       0,           -1 },
   { "steam",               NULL,       NULL,       1 << 3,       0,           -1 },
   
