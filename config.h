@@ -9,7 +9,7 @@ static const unsigned int snap      = 32;       /* snap pixel (standart: 32) */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {
-	"FiraCode Nerd Font:style:SemiBold:size=18",
+	"FiraCode Nerd Font:style:SemiBold:size=14",
   	"Iosevka Nerd Font:style=SemiBold:size=18",
   	"Font Awesome 6 Free:size=18",
 	"Noto Color Emoji:size=18"
@@ -36,7 +36,7 @@ static const char *colors[][3]      = {
 /* tagging */
 const char *tags[] = {
   "", "", "", "󰓓", "5", "6", "󰈦", "8", "9",
-  "", "", "", "", "", "󰟓", "", "", "A9"
+  "", "", "", "", "", "", "", "", "A9"
 };
 
 static const Rule rules[] = {
